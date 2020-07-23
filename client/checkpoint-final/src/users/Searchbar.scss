@@ -1,0 +1,26 @@
+.filter-bar {
+    @media (max-width: 960px) {
+      padding: 20px;
+    }
+    margin-top: 30px;
+  
+    .MuiOutlinedInput-root {
+      margin-right: 20px !important;
+    }
+  
+    .MuiInputBase-input {
+      background-color: white;
+    }
+  
+    .MuiSelect-select:focus {
+      background-color: white !important;
+    }
+  
+    .nbMedia {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+      margin-left: 9px;
+    }
+  }
+  

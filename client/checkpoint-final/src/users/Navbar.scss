@@ -1,0 +1,39 @@
+.navBar {
+    .MuiAppBar-colorPrimary {
+      color: #fff;
+      background-color: #C3D9E0 !important;
+    }
+  
+    .MuiToolbar-root {
+      height: 100px;
+    }
+  
+    .MuiButtonBase-root {
+      padding: 40px;
+    }
+  
+    .MuiButton-label {
+      color: #006D80 !important;
+      font-weight: bold !important;
+    }
+  
+    .link {
+      text-decoration: none !important;
+    }
+
+    img {
+        max-width: 120px;
+    }
+  }
+  
+  .desktop-link {
+    @media (max-width: 1180px) {
+      display: none;
+    }
+  }
+  
+  .content-nav {
+    display: flex !important;
+    justify-content: space-between !important;
+  }
+  
