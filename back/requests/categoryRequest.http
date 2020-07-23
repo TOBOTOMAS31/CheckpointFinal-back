@@ -1,5 +1,5 @@
 ### POST a category
-POST http://localhost:4000/category/
+POST http://localhost:4000/category
 Content-Type: application/json
 
 {
