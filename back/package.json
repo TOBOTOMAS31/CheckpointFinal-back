@@ -1,0 +1,31 @@
+{
+  "name": "CheckpointFinal-back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TOBOTOMAS31/CheckpointFinal-back.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TOBOTOMAS31/CheckpointFinal-back/issues"
+  },
+  "homepage": "https://github.com/TOBOTOMAS31/CheckpointFinal-back#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "util": "^0.12.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

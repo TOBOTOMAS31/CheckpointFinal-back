@@ -1,0 +1,19 @@
+### create a user
+POST http://localhost:4000/signin
+Accept: application/json
+Content-Type: application/json
+
+{
+      "admin_mail": "thomas@gmail.com",
+      "admin_password": "checkpoint4"
+}
+
+### login
+POST http://localhost:4000/login
+Accept: application/json
+Content-Type: application/json
+
+{
+      "admin_mail": "thomas@gmail.com",
+      "admin_password": "checkpoint4"
+}

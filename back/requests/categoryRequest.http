@@ -1,0 +1,24 @@
+### POST a category
+POST http://localhost:4000/category/
+Content-Type: application/json
+
+{
+    "cat_name": "Paysage"
+}
+
+### PUT a category
+PUT http://localhost:4000/category/5
+Content-Type: application/json
+
+{
+    "cat_name": "Paysage"
+}
+
+### GET all category
+GET http://localhost:4000/category
+
+### GET category by ID
+GET http://localhost:4000/category/3
+
+# ### DELETE category by ID
+# DELETE http://localhost:4000/category/2
