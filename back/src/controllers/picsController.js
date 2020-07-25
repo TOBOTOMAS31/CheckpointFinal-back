@@ -6,14 +6,14 @@ class PicsController {
       if (err) {
         return res.status(500).json({ error: `${err}` });
       }
-      // req.pic_id = result.insertId;
-      // const pictures_pic_id = req.pic_id;
-      // return PicsModel.addTagsToPic(req, pictures_pic_id, (err, results) => {
-      //   if (err) {
-      //     return res.status(500).json({ error: `${err}` });
-      //   }
-      // });
-      return res.status(200).json(result);
+      req.pic_id = result.insertId;
+      const pictures_pic_id = req.pic_id;
+      return PicsModel.addTagsToPic(req, pictures_pic_id, (err, results) => {
+        if (err) {
+          return res.status(500).json({ error: `${err}` });
+        }
+        return res.status(200).json(result);
+      });
     });
   }
 

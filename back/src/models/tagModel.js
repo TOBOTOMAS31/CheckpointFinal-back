@@ -14,7 +14,7 @@ class TagModel {
   }
 
   static getAllTag(req, callback) {
-    connection.query('SELECT * FROM tags', (err, results) => {
+    connection.query('SELECT * FROM tags ORDER BY tag_id ASC', (err, results) => {
       callback(err, results);
     });
   }

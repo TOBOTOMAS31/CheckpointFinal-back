@@ -14,7 +14,7 @@ class CategoryModel {
   }
 
   static getAllCategory(req, callback) {
-    connection.query('SELECT * FROM category', (err, results) => {
+    connection.query('SELECT * FROM category ORDER BY cat_id ASC', (err, results) => {
       callback(err, results);
     });
   }

@@ -21,7 +21,7 @@ class PicsModel {
   static addTagsToPic(req, pictures_pic_id, callback) {
     const { tags_tag_id } = req.body;
     const multiTags = [];
-    tags_tag_id.map((tag_id) => multiTags.push([pictures_pic_id, tag_id]));
+    tags_tag_id.map((tagId) => multiTags.push([pictures_pic_id, tagId]));
     connection.query(
       "INSERT INTO pictures_has_tags (pictures_pic_id, tags_tag_id) VALUES ?",
       [multiTags],
@@ -36,7 +36,8 @@ class PicsModel {
       `SELECT pictures.*, category.cat_name 
         FROM pictures
         INNER JOIN category
-        ON pictures.category_cat_id = category.cat_id`,
+        ON pictures.category_cat_id = category.cat_id
+        ORDER BY pic_id ASC`,
       (err, results) => {
         callback(err, results);
       }
