@@ -4,31 +4,43 @@ import Navbar from "./Navbar";
 import Searchbar from "./Searchbar";
 import PicsList from "./PicsList";
 import { Container, Grid } from "@material-ui/core/";
+import _ from 'lodash';
 
 const Home = () => {
   const [picsList, setPicsList] = useState([]);
   const [catList, setCatList] = useState([]);
   const [catSelected, setCatSelected] = useState();
+  const [tagSelected, setTagSelected] = useState();
 
   // récupérer toutes les photos avec ou sans filtre
   useEffect(() => {
     const fetchData = async () => {
-      if (catSelected) {
-        const result = await axios
-          .get(`/pics?category=${catSelected}`)
-          .catch((error) => {
-            console.log(error.toJSON());
-          });
-        setPicsList(result.data);
-      } else {
-        const result = await axios.get("/pics").catch((error) => {
-          console.log(error.toJSON());
-        });
-        setPicsList(result.data);
+      const resultTagSelected = tagSelected
+      ? await axios.get(`/pics?tag=${tagSelected}`).catch(function(error) {
+        console.log(error.toJSON());
+      })
+    : [];
+    const resultCatSelected = catSelected
+      ? await axios.get(`/pics?category=${catSelected}`).catch(function(error) {
+        console.log(error.toJSON());
+      })
+    : [];
+      if (catSelected && tagSelected) {
+        const results = _.intersectionWith(
+          resultTagSelected.data,
+          resultCatSelected.data,
+          _.isEqual
+        );
+        setPicsList(results);
+      }
+      else if (catSelected && !tagSelected) {
+        return setPicsList(resultCatSelected.data);
+      } else if (tagSelected && !catSelected) {
+        return setPicsList(resultTagSelected.data);
       }
     };
     fetchData();
-  }, [catSelected]);
+  }, [catSelected, tagSelected]);
 
   // récupérer toutes les catégories
   useEffect(() => {
