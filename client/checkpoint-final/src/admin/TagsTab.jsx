@@ -15,38 +15,38 @@ import IconButton from '@material-ui/core/IconButton';
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 200
+    minWidth: 150
   }
 });
 
 const CategorieTab = props => {
-  const { categoriesList, setCategoriesList } = props;
+  const { tagsList, setTagsList } = props;
 
   const classes = useStyles();
 
-  // Delete catégorie
-  const DeleteCategories = id => {
-    axios.delete(`/category/${id}`).then(res => {});
+  // Delete tag
+  const DeleteTag = id => {
+    axios.delete(`/tags/${id}`).then(res => {});
   };
 
   return (
-    <Box mx="auto" mt={5}>
+    <Box mx="auto" mt={2}>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table" stickyHeader>
           <TableHead>
             <TableRow>
               <TableCell>Id</TableCell>
-              <TableCell align="center">Catégories</TableCell>
+              <TableCell align="center">Tag</TableCell>
               {/* <TableCell align="center">Supprimer</TableCell> */}
             </TableRow>
           </TableHead>
           <TableBody>
-            {categoriesList.map(categories => (
-              <TableRow key={categories.cat_name}>
+            {tagsList.map(tag => (
+              <TableRow key={tag.tag_name}>
                 <TableCell component="th" scope="row">
-                  {categories.cat_id}
+                  {tag.tag_id}
                 </TableCell>
-                <TableCell align="center">{categories.cat_name}</TableCell>
+                <TableCell align="center">{tag.tag_name}</TableCell>
                 {/* <TableCell align="center">
                   <IconButton
                     aria-label="delete"

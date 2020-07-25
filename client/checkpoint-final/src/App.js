@@ -18,10 +18,6 @@ function App() {
           <Home />
         </Route>
 
-        {/* <Route path="/pic/:pic_id/:pic_name">
-          <PicDetail />
-        </Route> */}
-
           <Route exact path="/admin">
             <Navigation />
           </Route>

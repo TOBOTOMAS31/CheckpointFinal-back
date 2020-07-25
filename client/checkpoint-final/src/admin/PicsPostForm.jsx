@@ -75,20 +75,46 @@ const PicsPostForm = (props) => {
   const { handleSubmit, register, control } = useForm();
   const classes = useStyles();
 
+  const [tagName, setTagName] = React.useState([]);
+
+  const handleChange = event => {
+    const tagId = event.target.value;
+    setTagName(tagId);
+  };
+
   const onSubmit = (data) => {
-    const dataForms = {
-      ...data,
-    };
-    axios
-      .post("/pics", dataForms)
-      .then((res) => res.data)
-      .then((res) => {
-        alert(`L'image a bien été ajoutée`);
-      })
-      .catch((e) => {
-        console.error(e);
-        alert(`Erreur concernant l'ajout de l'image`);
-      });
+    if (!updateMode) {
+      const dataForms = {
+        ...data,
+        tags_tag_id: tagName
+      };
+      axios
+        .post("/pics", dataForms)
+        .then((res) => res.data)
+        .then((res) => {
+          alert(`L'image a bien été ajoutée`);
+        })
+        .catch((e) => {
+          console.error(e);
+          alert(`Erreur concernant l'ajout de l'image`);
+        });
+    } else if (updateMode) {
+      const dataForms = {
+        ...data,
+        tags_tag_id: tagName
+      };
+      axios
+        .put(`/pics/${picToUpdate}`, dataForms)
+        .then(res => res.data)
+        .then(res => {
+          alert(`Photo est modifiée avec succès'`);
+        })
+        .catch(e => {
+          console.error(e);
+          alert(`Erreur concernant la modification  de la photo ${e}`);
+        });
+    }
+    document.location.reload(true);
   };
 
   return (
@@ -158,7 +184,7 @@ const PicsPostForm = (props) => {
               />
             </FormControl>
           </Grid>
-          {/* <Grid item xs={6}>
+          <Grid item xs={6}>
             <FormControl className={classes.formControl}>
               <InputLabel id="demo-mutiple-chip-label">Tags</InputLabel>
               <Select
@@ -172,20 +198,20 @@ const PicsPostForm = (props) => {
                 renderValue={selected => (
                   <div className={classes.chips}>
                     {selected.map((value, i) => (
-                      <Chip key={value} label={value} className={classes.chip} />
+                      <Chip key={value.tag_id} label={value.tag_name} className={classes.chip} />
                     ))}
                   </div>
                 )}
                 MenuProps={MenuProps}
               >
                 {tags.map(tag => (
-                  <MenuItem key={tag.tag_id} value={tag.tag_id}>
+                  <MenuItem key={tag.tag_id} value={tag}>
                     {`${tag.tag_id} - ${tag.tag_name}`}
                   </MenuItem>
                 ))}
               </Select>
             </FormControl>
-          </Grid> */}
+          </Grid>
 
           <Grid item xs={12}>
             <Button type="submit" variant="contained" color="primary">

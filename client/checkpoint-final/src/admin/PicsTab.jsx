@@ -24,11 +24,18 @@ const PicsTab = (props) => {
   const { setUpdateMode, setPicToUpdate, picToUpdate, picsData } = props;
   const classes = useStyles();
 
-  // Delete Podcast
-  const DeletePic = (id) => {
-    axios.delete(`/pics/${id}`).then((res) => {
-        alert('Image supprimée avec succès')
-    });
+  // Delete pic
+  const DeletePic = (id, name) => {
+    const confirm = window.confirm(`Es tu sûr de vouloir supprimer la photo ${name} ? `)
+    if (confirm) {
+      axios.delete(`/pics/${id}`).then((res) => {
+        if(window.confirm('Image supprimée avec succès')){
+          document.location.reload(true);
+        } else {
+          document.location.reload(true);
+        }
+      });
+    }
   };
 
   return (
@@ -65,7 +72,7 @@ const PicsTab = (props) => {
                   <IconButton
                     aria-label="delete"
                     className={classes.margin}
-                    onClick={() => DeletePic(pic.pic_id)}
+                    onClick={() => DeletePic(pic.pic_id, pic.pic_name)}
                   >
                     <DeleteIcon fontSize="large" />
                   </IconButton>

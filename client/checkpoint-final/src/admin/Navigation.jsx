@@ -8,7 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import PicsPage from './PicsPage';
 import CategoriesPage from './CategoriesPage';
-// import TagsPage from './TagsPage';
+
+import TagsPage from './TagsPage';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -78,7 +79,7 @@ export default function VerticalTabs() {
         <CategoriesPage />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        {/* <TagsPage /> */}
+        <TagsPage />
       </TabPanel>
       <span className="desktop-link">
         <Link className="link" to="/">
