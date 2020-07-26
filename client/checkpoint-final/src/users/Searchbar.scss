@@ -2,7 +2,7 @@
     @media (max-width: 960px) {
       padding: 20px;
     }
-    margin-top: 30px;
+    margin-top: 40px;
   
     .MuiOutlinedInput-root {
       margin-right: 20px !important;
@@ -21,6 +21,12 @@
       align-items: center;
       flex-grow: 1;
       margin-left: 9px;
+    }
+
+    .cat-select{
+      @media (min-width: 960px) {
+        margin-bottom: 30px;
+      }
     }
   }
   

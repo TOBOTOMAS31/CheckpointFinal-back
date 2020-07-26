@@ -7,7 +7,9 @@ import ReactCardFlip from "react-card-flip";
 import "./PicCard.scss";
 
 const picCard = (props) => {
-  const { pic, catSelected } = props;
+  const { pic } = props;
+
+  const url = window.location.href.split('/');
 
   return (
     <div className="picCard">
@@ -19,8 +21,8 @@ const picCard = (props) => {
       />
       <div className="footer">
         <div className="categoryTag">{pic.cat_name}</div>
-        <Link component={RouterLink} to={`/pics/${pic.pic_id}`}>
-          <Button variant="outlined" color="primary" size="small">
+        <Link component={RouterLink} to={`/pic-detail/${pic.pic_id}`}>
+          <Button variant="outlined"  size="small" >
             Voir
           </Button>
         </Link>

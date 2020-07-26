@@ -4,6 +4,12 @@
   pointer-events: none;
 }
 
+.error {
+  text-align: center;
+  font-size: large;
+  margin-top: 100px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

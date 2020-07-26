@@ -1,0 +1,28 @@
+.picDetail{
+    .pic{
+        display: flex;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        max-width: 50%;
+        height: auto;
+        margin-right: auto;
+        margin-left: auto;
+        @media (max-width: 776px) {
+            max-width: 95%;
+            height: auto;
+            margin-bottom: 20px;
+          }
+          @media (min-width: 777px) and (max-width: 1025px) {
+            max-width: 60%;
+            height: auto;
+            margin-bottom: 20px;
+          }
+    }
+
+    .picName {
+        text-align: center;
+        margin-top: 20px;
+        font-size: large;
+        font-style: italic;
+    }
+}

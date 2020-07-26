@@ -72,9 +72,11 @@ const Home = () => {
     fetchData();
   }, []);
 
+  const url = window.location.href.split('/');
+
   return (
     <div>
-      <Navbar />
+       {url[3] !== 'pic-detail' && <Navbar />}
       <Container maxWidth="lg">
         <Grid container spacing={1}>
           <Grid xs={12} md={3} lg={2}>

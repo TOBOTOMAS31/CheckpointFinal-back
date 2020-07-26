@@ -120,7 +120,7 @@ const PicsPostForm = (props) => {
   return (
     <Box p={2} bgcolor="background.paper" display="flex">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           <Grid item xs={6}>
             <TextField
               name="pic_name"
@@ -131,7 +131,7 @@ const PicsPostForm = (props) => {
               fullWidth
             />
           </Grid>
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <TextField
               name="pic_description"
               inputRef={register}
@@ -142,7 +142,7 @@ const PicsPostForm = (props) => {
               variant="outlined"
               fullWidth
             />
-          </Grid>
+          </Grid> */}
           <Grid item xs={6}>
             <TextField
               name="pic_link"
@@ -184,7 +184,7 @@ const PicsPostForm = (props) => {
               />
             </FormControl>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={4}>
             <FormControl className={classes.formControl}>
               <InputLabel id="demo-mutiple-chip-label">Tags</InputLabel>
               <Select

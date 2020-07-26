@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
+import PersonIcon from '@material-ui/icons/Person';
 import './Navbar.scss';
 
 const useStyles = makeStyles(theme => ({
@@ -29,12 +30,12 @@ export default function Navbar() {
           <Toolbar className="content-nav">
             <div>
               <a href="/">
-                <img src="/logo.png" alt="logo" />
+                <img src="/logopic.png" alt="logo" />
               </a>
             </div>
             <span className="desktop-link">
-              <Link className="link" to="/admin">
-                <Button>Admin</Button>
+              <Link className="link" to="/login">
+                <Button><PersonIcon fontSize="large"/></Button>
               </Link>
             </span>
           </Toolbar>

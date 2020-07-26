@@ -7,11 +7,10 @@ const AdvancedSearchSelect = (props) => {
     const { catSelected, setCatSelected, catList, tagSelected, setTagSelected,
     tagList } = props;
 
-    console.log('tag', tagSelected)
-  return (
+    return (
     <div className="filter-bar">
       <Grid container direction="row" justify="flex-start" alignItems="center">
-          <Grid xs={12} md={12} lg={12} >
+          <Grid xs={6} sm={6} md={12} lg={12} >
             <FormControl variant="outlined" className="MuiFormControl-fullWidth">
               <InputLabel id="demo-simple-select-outlined-label" fullWidth>
                 Catégories
@@ -24,6 +23,7 @@ const AdvancedSearchSelect = (props) => {
                 name="category_cat_id"
                 value={catSelected}
                 onChange={e => setCatSelected(e.target.value)}
+                className="cat-select"
               >
                   <MenuItem value=''>Toutes les photos</MenuItem>
                 {catList.map(category => {
@@ -33,7 +33,7 @@ const AdvancedSearchSelect = (props) => {
             </FormControl>
           </Grid>
 
-          <Grid xs={12} md={12} lg={12} >
+          <Grid xs={6} sm={6} md={12} lg={12} >
             <FormControl variant="outlined" className="MuiFormControl-fullWidth">
               <InputLabel id="demo-simple-select-outlined-label" fullWidth>
                 Tags
