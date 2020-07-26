@@ -9,12 +9,16 @@ import _ from 'lodash';
 const Home = () => {
   const [picsList, setPicsList] = useState([]);
   const [catList, setCatList] = useState([]);
+  const [tagList, setTagList] = useState([]);
   const [catSelected, setCatSelected] = useState();
   const [tagSelected, setTagSelected] = useState();
 
   // récupérer toutes les photos avec ou sans filtre
   useEffect(() => {
     const fetchData = async () => {
+      const getAllPics = await axios.get(`/pics`).catch(function(error) {
+        console.log(error.toJSON());
+      });
       const resultTagSelected = tagSelected
       ? await axios.get(`/pics?tag=${tagSelected}`).catch(function(error) {
         console.log(error.toJSON());
@@ -38,6 +42,9 @@ const Home = () => {
       } else if (tagSelected && !catSelected) {
         return setPicsList(resultTagSelected.data);
       }
+      else if (!catSelected && !tagSelected) {
+        return setPicsList(getAllPics.data);
+      }
     };
     fetchData();
   }, [catSelected, tagSelected]);
@@ -54,6 +61,17 @@ const Home = () => {
     fetchData();
   }, []);
 
+  // récupérer tous les tags
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get("/tags").catch((error) => {
+        console.log(error.toJSON());
+      });
+      setTagList(result.data);
+    };
+    fetchData();
+  }, []);
+
   return (
     <div>
       <Navbar />
@@ -64,6 +82,9 @@ const Home = () => {
               catList={catList}
               catSelected={catSelected}
               setCatSelected={setCatSelected}
+              tagSelected={tagSelected}
+              setTagSelected={setTagSelected}
+              tagList={tagList}
             />
           </Grid>
           <Grid lg={10} xs={12} md={12}>

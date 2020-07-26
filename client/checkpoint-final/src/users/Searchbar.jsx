@@ -4,8 +4,10 @@ import { Grid, Select, MenuItem, InputLabel, FormControl } from '@material-ui/co
 import './Searchbar.scss';
 
 const AdvancedSearchSelect = (props) => {
-    const { catSelected, setCatSelected, catList } = props;
+    const { catSelected, setCatSelected, catList, tagSelected, setTagSelected,
+    tagList } = props;
 
+    console.log('tag', tagSelected)
   return (
     <div className="filter-bar">
       <Grid container direction="row" justify="flex-start" alignItems="center">
@@ -26,6 +28,28 @@ const AdvancedSearchSelect = (props) => {
                   <MenuItem value=''>Toutes les photos</MenuItem>
                 {catList.map(category => {
                   return <MenuItem value={category.cat_id}>{category.cat_name}</MenuItem>;
+                })}
+              </Select>
+            </FormControl>
+          </Grid>
+
+          <Grid xs={12} md={12} lg={12} >
+            <FormControl variant="outlined" className="MuiFormControl-fullWidth">
+              <InputLabel id="demo-simple-select-outlined-label" fullWidth>
+                Tags
+              </InputLabel>
+
+              <Select
+                labelId="demo-simple-select-outlined-label"
+                id="demo-simple-select-outlined"
+                label="tag"
+                name="tags_tag_id"
+                value={tagSelected}
+                onChange={e => setTagSelected(e.target.value)}
+              >
+                  <MenuItem value=''>Toutes les photos</MenuItem>
+                {tagList.map(tag => {
+                  return <MenuItem value={tag.tag_id}>{tag.tag_name}</MenuItem>;
                 })}
               </Select>
             </FormControl>

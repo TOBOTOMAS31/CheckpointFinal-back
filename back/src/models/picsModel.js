@@ -21,11 +21,13 @@ class PicsModel {
   static addTagsToPic(req, pictures_pic_id, callback) {
     const { tags_tag_id } = req.body;
     const multiTags = [];
-    tags_tag_id.map((tagId) => multiTags.push([pictures_pic_id, tagId]));
+    tags_tag_id.map((tagId) => multiTags.push([pictures_pic_id, tagId.tag_id]));
+    console.log('multitags', multiTags)
     connection.query(
       "INSERT INTO pictures_has_tags (pictures_pic_id, tags_tag_id) VALUES ?",
       [multiTags],
       (err1, result1) => {
+        console.log(result1);
         callback(err1, result1);
       }
     );
